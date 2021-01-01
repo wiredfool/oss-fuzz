@@ -51,3 +51,5 @@ RUN git clone --depth 1 https://github.com/python-pillow/Pillow
 WORKDIR $SRC
 COPY build.sh $SRC/
 COPY fuzz_* $SRC/Pillow
+# install extra test images for a better starting corpus
+RUN cd Pillow && depends/install_extra_test_images.sh
