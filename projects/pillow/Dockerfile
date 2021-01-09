@@ -30,7 +30,7 @@ RUN cat fuzzing/dictionaries/bmp.dict \
       > $OUT/fuzz_pillow.dict
 
 # library build dependencies
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
       libxau-dev \
       pkg-config \
       rsync \
@@ -54,11 +54,12 @@ RUN cd Pillow && depends/install_extra_test_images.sh
 COPY build.sh $SRC/
 
 # pillow runtime dependencies
-RUN apt-get install -y \
-      libfribidi-dev \
-      libharfbuzz-dev \
-      python3-tk \
-      tcl8.6-dev \
-      tk8.6-dev 
+# RUN apt-get install -y \
+#      libfribidi-dev \
+#      libharfbuzz-dev \
+#      python3-tk \
+#      tcl8.6-dev \
+#      tk8.6-dev \
+#      libraqm0
 
 WORKDIR $SRC/Pillow
